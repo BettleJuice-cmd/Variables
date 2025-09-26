@@ -12,6 +12,7 @@ namespace Variables
 {
     public partial class FrmLogin : Form
     {
+        int contador = 0;
         public FrmLogin()
         {
             InitializeComponent();
@@ -41,9 +42,24 @@ namespace Variables
         {
             if (Login(tbUser.Text, tbPassword.Text))
              {
-                new Form1().Show();
-                this.Hide();
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+                
 
+
+
+                
+
+            }
+            else
+            {
+                contador++;
+                MessageBox.Show("Contraseña Invalida");
+            }
+            if (contador ==3)
+            {
+                MessageBox.Show("Usted ha excecido los intentos", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
             }
         }
 
